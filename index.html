@@ -1,45 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ESP32 Location Tracker</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map { height: 400px; width: 100%; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Test Page</title>
 </head>
 <body>
-  <h1>ESP32 Location Tracker</h1>
-  <div id="map"></div>
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // Initialize the map
-    const map = L.map('map').setView([0, 0], 13);
-
-    // Set up the map layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Marker for ESP32 location
-    const marker = L.marker([0, 0]).addTo(map);
-
-    // Fetch location data every few seconds
-    async function updateLocation() {
-      const response = await fetch('http://YOUR_BACKEND_SERVER/api/location');
-      const data = await response.json();
-      
-      const { latitude, longitude } = data;
-      
-      if (latitude && longitude) {
-        // Update marker position
-        marker.setLatLng([latitude, longitude]);
-        map.setView([latitude, longitude], 13);
-      }
-    }
-
-    setInterval(updateLocation, 60000); // Update every 60 seconds
-  </script>
+    <h1>ESP32 Connection Test</h1>
+    <p>If you're seeing this page, your ESP32 successfully connected to the website.</p>
 </body>
 </html>
